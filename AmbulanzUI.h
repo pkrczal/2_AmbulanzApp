@@ -27,12 +27,17 @@ Modul erstellt
 
 #include "Ambulanz.h"
 
-class AmbulanzUI
- {
-  public:
+class AmbulanzUI {
+public:
     AmbulanzUI() {};
+
     ~AmbulanzUI() {};
 
-    void eingabePatientenDaten (Ambulanz *ambu);
+    void eingabePatientenDaten(Ambulanz *ambu);
+
     void ioSchnittstelle(Ambulanz *ambu);
- };
+
+    void bearbeitePatientenDaten(Ambulanz *ambu);
+
+    void clearCin();
+};

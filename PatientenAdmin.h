@@ -29,31 +29,37 @@ Modul erstellt
 
 #include "Patient.h"
 
-class PatientenAdmin
-  {
-  public:
-    PatientenAdmin() 
-      {
-      patienten            = NULL;
-      anzahlPatienten      = 0;
-      laengePatientenArray = 0;
-      arrayIncrement       = 1;
-      initialisiert        = false;
-      }
-    ~PatientenAdmin() 
-      {
-      if(patienten) delete[] patienten;
-      }
-    void start ();
-    void aufnehmenPatient (std::string name, std::string vorname, Person::Geschlecht geschlecht);
-    void zeigePatienten ();
-    Patient** erweitereArray();
-    Patient** erweitereArrayNew();
+class PatientenAdmin {
+public:
+    PatientenAdmin() {
+        patienten = NULL;
+        anzahlPatienten = 0;
+        laengePatientenArray = 0;
+        arrayIncrement = 1;
+        initialisiert = false;
+    }
 
-  private:
-    int       initialisiert;
-    int       anzahlPatienten;
-    int       laengePatientenArray;
-    int       arrayIncrement;
-    Patient** patienten;
-  };
+    ~PatientenAdmin() {
+        if (patienten) delete[] patienten;
+    }
+
+    void start();
+
+    void aufnehmenPatient(std::string name, std::string vorname, Person::Geschlecht geschlecht, std::string Geburtstag,
+                          std::string Krankenkasse);
+
+    void zeigePatienten();
+
+    Patient *getPatientMitId(int Id);
+
+    Patient **erweitereArray();
+
+    Patient **erweitereArrayNew();
+
+private:
+    int initialisiert;
+    int anzahlPatienten;
+    int laengePatientenArray;
+    int arrayIncrement;
+    Patient **patienten;
+};

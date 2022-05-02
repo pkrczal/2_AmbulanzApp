@@ -54,6 +54,8 @@ public:
 
     const std::string &getGeburtstag() const;
 
+    void setGeburtstag(const std::string &geburtstag);
+
     std::string getGeschlecht() {
         return geschlechtMap[geschlecht];
     }

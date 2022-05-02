@@ -16,4 +16,4 @@ add_executable(2_AmbulanzApp
         PatientenAdmin.cpp
         PatientenAdmin.h
         Person.cpp
-        Person.h Patient.cpp)
+        Person.h Patient.cpp Arzt.cpp AerzteAdmin.cpp AerzteAdmin.h)

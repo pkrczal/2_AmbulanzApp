@@ -17,17 +17,21 @@ void PatientenAdmin::start() {
     // z.B. Einlesen exisitierender Patienten aus externem Speicher ...
 }
 
-void PatientenAdmin::aufnehmenPatient(std::string name, std::string vorname, Person::Geschlecht geschlecht) {
+void PatientenAdmin::aufnehmenPatient(std::string name,
+                                      std::string vorname,
+                                      Person::Geschlecht geschlecht,
+                                      std::string Geburtstag,
+                                      std::string Krankenkasse) {
     if (!initialisiert) start();
     if (anzahlPatienten < laengePatientenArray) {
         int id = 0;
-        Patient *pat = new Patient(id, name, vorname, geschlecht, "Test");
+        Patient *pat = new Patient(id, name, vorname, geschlecht, Geburtstag, Krankenkasse);
         patienten[anzahlPatienten] = pat;
         anzahlPatienten++;
     } else {
         patienten = erweitereArray();
         int id = 0;
-        Patient *pat = new Patient(id, name, vorname, geschlecht, "Test");
+        Patient *pat = new Patient(id, name, vorname, geschlecht, Geburtstag, Krankenkasse);
         patienten[anzahlPatienten] = pat;
         anzahlPatienten++;
     }
@@ -61,18 +65,36 @@ Patient **PatientenAdmin::erweitereArray() {
 
 void PatientenAdmin::zeigePatienten() {
     cout << "Patienten:" << endl;
-    cout << "Name" << "\t\t\t" << "Vorname" << "\t\t\t" << "Geschlecht" << "\t\t\t" << "ID" << endl;
+    cout << "Name" << "\t\t\t"
+         << "Vorname" << "\t\t\t"
+         << "Geschlecht" << "\t\t\t"
+         << "ID" << "\t\t\t"
+         << "Geburtstag" << "\t\t\t"
+         << "Krankenkasse" << "\t\t\t" << endl;
 
     for (int i = 0; i < anzahlPatienten; i++) {
         Patient *pat = patienten[i];
         cout << pat->getName()
-        << "\t\t\t"
-        << pat->getVorname()
-        << "\t\t\t"
-        << pat->getGeschlecht()
-        << "\t\t\t"
-        << pat->getID()
-        << endl;
+             << "\t\t\t"
+             << pat->getVorname()
+             << "\t\t\t"
+             << pat->getGeschlecht()
+             << "\t\t\t"
+             << pat->getID()
+             << "\t\t\t"
+             << pat->getGeburtstag()
+             << "\t\t\t"
+             << pat->getKrankenkasse()
+             << endl;
     }
+}
+
+Patient *PatientenAdmin::getPatientMitId(int Id) {
+    for (int i = 0; i < anzahlPatienten; i++) {
+        if (patienten[i]->getID() == Id) {
+            return patienten[i];
+        }
+    }
+    return nullptr;
 }
 

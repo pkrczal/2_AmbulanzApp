@@ -70,4 +70,8 @@ const std::string &Person::getVorname() const {
 const std::string &Person::getGeburtstag() const {
     return Geburtstag;
 }
+
+void Person::setGeburtstag(const string &geburtstag) {
+    Geburtstag = geburtstag;
+}
   
